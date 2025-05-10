@@ -2,7 +2,7 @@ services:
   - type: web
     name: pixelboom-back
     env: node
-    buildCommand: pnpm install && pnpm run build
+    buildCommand: pnpm install && pnpm run prepare && pnpm run build
     startCommand: pnpm start
     envVars:
       - key: NODE_ENV
