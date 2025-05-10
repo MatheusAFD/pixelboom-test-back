@@ -3,7 +3,7 @@ services:
     name: pixelboom-back
     env: node
     buildCommand: pnpm install && pnpm run prepare && pnpm run build
-    startCommand: pnpm start
+    startCommand: pnpm start:prod
     envVars:
       - key: NODE_ENV
         value: production
