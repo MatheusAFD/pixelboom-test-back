@@ -1,5 +1,5 @@
 import Fastify from 'fastify'
-import { userController } from '@controllers/user-controller'
+import { userController } from './controllers/user-controller'
 import cors from '@fastify/cors'
 import sensible from '@fastify/sensible'
 

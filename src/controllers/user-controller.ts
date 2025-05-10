@@ -3,13 +3,13 @@ import {
   userCreateSchema,
   userUpdateSchema,
   userListQuerySchema,
-} from '@models/user.schema'
-import { listUsers } from 'use-cases/list-users'
-import { getUserById } from 'use-cases/get-user-by-id'
-import { createUser } from 'use-cases/create-user'
-import { updateUser } from 'use-cases/update-user'
-import { softDeleteUser } from 'use-cases/soft-delete-user'
-import { dashboardStats } from 'use-cases/dashboard-stats'
+} from '../models/user.schema'
+import { listUsers } from '../use-cases/list-users'
+import { getUserById } from '../use-cases/get-user-by-id'
+import { createUser } from '../use-cases/create-user'
+import { updateUser } from '../use-cases/update-user'
+import { softDeleteUser } from '../use-cases/soft-delete-user'
+import { dashboardStats } from '../use-cases/dashboard-stats'
 
 export async function userController(fastify: FastifyInstance) {
   fastify.get('/', async (request, reply) => {
