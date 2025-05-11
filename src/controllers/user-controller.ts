@@ -27,14 +27,21 @@ export async function userController(fastify: FastifyInstance) {
 
   fastify.post('/', async (request, reply) => {
     const data = userCreateSchema.parse(request.body)
-    const user = await createUser({ ...data, isActive: data.isActive ?? true })
+    const user = await createUser({
+      ...data,
+      isActive: data.isActive ?? true,
+      phoneIsWhatsapp: data.phoneIsWhatsapp ?? true,
+    })
     return reply.code(201).send(user)
   })
 
   fastify.patch('/:id', async (request, reply) => {
     const id = String((request.params as any).id)
     const data = userUpdateSchema.parse(request.body)
-    const user = await updateUser(id, data)
+    const user = await updateUser(id, {
+      ...data,
+      phoneIsWhatsapp: data.phoneIsWhatsapp,
+    })
     if (!user) return reply.code(404).send({ message: 'User not found' })
     return reply.send(user)
   })

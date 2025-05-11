@@ -7,6 +7,7 @@ export const userCreateSchema = z.object({
   cpf: z.string().min(11).max(14),
   rg: z.string().min(5),
   isActive: z.boolean().optional(),
+  phoneIsWhatsapp: z.boolean().optional(),
 })
 
 export const userUpdateSchema = z.object({
@@ -16,6 +17,7 @@ export const userUpdateSchema = z.object({
   cpf: z.string().min(11).max(14).optional(),
   rg: z.string().min(5).optional(),
   isActive: z.boolean().optional(),
+  phoneIsWhatsapp: z.boolean().optional(),
 })
 
 export const userListQuerySchema = z.object({

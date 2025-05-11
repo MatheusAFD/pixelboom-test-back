@@ -8,6 +8,7 @@ export interface CreateUserInput {
   cpf: string
   rg: string
   isActive?: boolean
+  phoneIsWhatsapp?: boolean
 }
 
 export type CreateUserResult = User
@@ -19,6 +20,7 @@ export async function createUser(
     data: {
       ...input,
       isActive: input.isActive ?? true,
+      phoneIsWhatsapp: input.phoneIsWhatsapp ?? true,
     },
   })
 }

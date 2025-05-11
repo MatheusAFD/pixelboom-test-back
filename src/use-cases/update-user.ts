@@ -8,6 +8,7 @@ export interface UpdateUserInput {
   cpf?: string
   rg?: string
   isActive?: boolean
+  phoneIsWhatsapp?: boolean
 }
 
 export type UpdateUserResult = User
@@ -21,6 +22,7 @@ export async function updateUser(
     data: {
       ...input,
       updatedAt: new Date(),
+      phoneIsWhatsapp: input.phoneIsWhatsapp,
     },
   })
 }
