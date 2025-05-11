@@ -31,7 +31,7 @@ export async function userController(fastify: FastifyInstance) {
     return reply.code(201).send(user)
   })
 
-  fastify.put('/:id', async (request, reply) => {
+  fastify.patch('/:id', async (request, reply) => {
     const id = String((request.params as any).id)
     const data = userUpdateSchema.parse(request.body)
     const user = await updateUser(id, data)
@@ -41,13 +41,17 @@ export async function userController(fastify: FastifyInstance) {
 
   fastify.delete('/:id', async (request, reply) => {
     const id = String((request.params as any).id)
+
     const user = await softDeleteUser(id)
+
     if (!user) return reply.code(404).send({ message: 'User not found' })
+
     return reply.send({ message: 'User deleted' })
   })
 
   fastify.get('/dashboard/stats', async (_request, reply) => {
     const stats = await dashboardStats()
+
     return reply.send(stats)
   })
 }

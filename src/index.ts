@@ -5,7 +5,11 @@ import sensible from '@fastify/sensible'
 
 const app = Fastify({ logger: true })
 
-app.register(cors)
+app.register(cors, {
+  origin: '*',
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['*'],
+})
 app.register(sensible)
 
 app.register(async (fastify) => {
