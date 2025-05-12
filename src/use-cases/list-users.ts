@@ -25,12 +25,8 @@ export async function listUsers({
     deletedAt: null,
   }
   if (search) {
-    where.OR = [
-      { name: { contains: search, mode: 'insensitive' } },
-      { email: { contains: search, mode: 'insensitive' } },
-      { phone: { contains: search, mode: 'insensitive' } },
-      { cpf: { contains: search, mode: 'insensitive' } },
-      { rg: { contains: search, mode: 'insensitive' } },
+    where.AND = [
+      db.$queryRaw`LOWER(name) LIKE '%' || ${search.toLowerCase()} || '%'`
     ]
   }
   if (startDate) where.createdAt = { gte: new Date(startDate) }
